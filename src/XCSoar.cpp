@@ -83,6 +83,13 @@ static const char *const Usage = "\n"
 #ifdef HAVE_CMDLINE_RESIZABLE
   "  -resizable      resizable window\n"
 #endif
+#ifdef SOFTWARE_ROTATE_DISPLAY
+  "  -orientation=N  set display orientation\n"
+  "                    N=1: portrait\n"
+  "                    N=2: landscape (default)\n"
+  "                    N=3: reverse portrait\n"
+  "                    N=4: reverse landscape\n"
+#endif
 #ifdef _WIN32
   "  -console        open debug output console\n"
 #endif

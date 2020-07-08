@@ -40,6 +40,7 @@ Copyright_License {
 namespace CommandLine {
   unsigned width = IsKobo() ? 600 : 640;
   unsigned height = IsKobo() ? 800 : 480;
+  DisplayOrientation orientation = DisplayOrientation::DEFAULT;
 
 #ifdef HAVE_CMDLINE_FULLSCREEN
   bool full_screen = false;
@@ -114,6 +115,14 @@ CommandLine::Parse(Args &args)
     } else if (StringIsEqual(s, "-fullscreen")) {
       full_screen = true;
 #endif
+    } else if (StringIsEqual(s, "-orientation=", 13)) {
+      char *p;
+      unsigned orient_val = ParseUnsigned(s+13, &p);
+      if (*p != '\0')
+        args.UsageError();
+      if (orient_val < 1 || orient_val > 4)
+        args.UsageError();
+      orientation = DisplayOrientation(orient_val);
 #ifdef _WIN32
     } else if (StringIsEqual(s, "-console")) {
       AllocConsole();

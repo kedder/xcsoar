@@ -24,10 +24,13 @@ Copyright_License {
 #ifndef XCSOAR_OS_COMMAND_LINE_HPP
 #define XCSOAR_OS_COMMAND_LINE_HPP
 
+#include "DisplayOrientation.hpp"
+
 class Args;
 
 namespace CommandLine {
   extern unsigned width, height;
+  extern DisplayOrientation orientation;
 
 #ifdef KOBO
   static constexpr bool full_screen = false;
@@ -42,6 +45,8 @@ namespace CommandLine {
 #define HAVE_CMDLINE_REPLAY
   extern const char *replay_path;
 #endif
+
+
 
 /**
  * Reads and parses arguments/options from the command line
